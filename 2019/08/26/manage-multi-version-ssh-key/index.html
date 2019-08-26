@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives: 2015/10 | Dan总的前端小屋</title>
+  <title>manage multi-version ssh-key | Dan总的前端小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="no desc">
-<meta name="keywords" content="前端 技术分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dan总的前端小屋">
-<meta property="og:url" content="http://leemq.top/archives/2015/10/index.html">
+  <meta name="description" content="管理多版本的ssh-key在日常工作中总会遇到很多工具需要在不同的git仓库中操作，如果只执行命令：ssh-keygen -t rsa -C  &amp;quot;yourname@email.com&amp;quot;，一路下一步的话，会生成一个默认的id_rsa文件，多个不同账号会互相覆盖，所以只有一个id_rsa肯定是行不通的，我们就需要对id_rsa进行版本管理。">
+<meta name="keywords" content="技术分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="manage multi-version ssh-key">
+<meta property="og:url" content="http://leemq.top/2019/08/26/manage-multi-version-ssh-key/index.html">
 <meta property="og:site_name" content="Dan总的前端小屋">
-<meta property="og:description" content="no desc">
+<meta property="og:description" content="管理多版本的ssh-key在日常工作中总会遇到很多工具需要在不同的git仓库中操作，如果只执行命令：ssh-keygen -t rsa -C  &amp;quot;yourname@email.com&amp;quot;，一路下一步的话，会生成一个默认的id_rsa文件，多个不同账号会互相覆盖，所以只有一个id_rsa肯定是行不通的，我们就需要对id_rsa进行版本管理。">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-08-26T06:59:52.024Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dan总的前端小屋">
-<meta name="twitter:description" content="no desc">
+<meta name="twitter:title" content="manage multi-version ssh-key">
+<meta name="twitter:description" content="管理多版本的ssh-key在日常工作中总会遇到很多工具需要在不同的git仓库中操作，如果只执行命令：ssh-keygen -t rsa -C  &amp;quot;yourname@email.com&amp;quot;，一路下一步的话，会生成一个默认的id_rsa文件，多个不同账号会互相覆盖，所以只有一个id_rsa肯定是行不通的，我们就需要对id_rsa进行版本管理。">
   
     <link rel="alternate" href="/blog/atom.xml" title="Dan总的前端小屋" type="application/atom+xml">
   
@@ -68,78 +69,55 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2015/10/29/使用Hexo搭建自己的Blog/" class="archive-article-date">
-  <time datetime="2015-10-29T04:16:10.000Z" itemprop="datePublished">10月 29</time>
+        <section id="main"><article id="post-manage-multi-version-ssh-key" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/08/26/manage-multi-version-ssh-key/" class="article-date">
+  <time datetime="2019-08-26T06:13:54.000Z" itemprop="datePublished">2019-08-26</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2015/10/29/使用Hexo搭建自己的Blog/">使用Hexo搭建自己的Blog</a>
+    <h1 class="article-title" itemprop="name">
+      manage multi-version ssh-key
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2015/10/27/Angular指令/" class="archive-article-date">
-  <time datetime="2015-10-27T01:09:49.000Z" itemprop="datePublished">10月 27</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2015/10/27/Angular指令/">AngularJS指令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2015/10/25/HelloWorld/" class="archive-article-date">
-  <time datetime="2015-10-25T15:22:13.000Z" itemprop="datePublished">10月 25</time>
-</a>
+        <h1 id="管理多版本的ssh-key"><a href="#管理多版本的ssh-key" class="headerlink" title="管理多版本的ssh-key"></a>管理多版本的ssh-key</h1><p>在日常工作中总会遇到很多工具需要在不同的git仓库中操作，如果只执行命令：<code>ssh-keygen -t rsa -C  &quot;yourname@email.com&quot;</code>，一路下一步的话，会生成一个默认的id_rsa文件，多个不同账号会互相覆盖，所以只有一个id_rsa肯定是行不通的，我们就需要对id_rsa进行版本管理。</p>
+<a id="more"></a>
+<h4 id="首先生成多个id-rsa文件"><a href="#首先生成多个id-rsa文件" class="headerlink" title="首先生成多个id_rsa文件"></a>首先生成多个id_rsa文件</h4>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2015/10/25/HelloWorld/">HelloWorld</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://leemq.top/2019/08/26/manage-multi-version-ssh-key/" data-id="cjzs1y88d0004m5gl4rjz7qeh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术分享/">技术分享</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/blog/2015/11/05/Solr技术分享/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Solr技术分享</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
