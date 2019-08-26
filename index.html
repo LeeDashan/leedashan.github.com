@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Dan总的前端小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="no desc">
+<meta name="keywords" content="前端 技术分享">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dan总的前端小屋">
+<meta property="og:url" content="http://leemq.top/index.html">
+<meta property="og:site_name" content="Dan总的前端小屋">
+<meta property="og:description" content="no desc">
+<meta property="og:locale" content="zh-cn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dan总的前端小屋">
+<meta name="twitter:description" content="no desc">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Dan总的前端小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Dan总的前端小屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">前端菜鸡成长记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://leemq.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Solr技术分享" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2015/11/05/Solr技术分享/" class="article-date">
+  <time datetime="2015-11-04T19:05:33.000Z" itemprop="datePublished">2015-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2015/11/05/Solr技术分享/">Solr技术分享</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Solr技术分享"><a href="#Solr技术分享" class="headerlink" title="Solr技术分享"></a>Solr技术分享</h1><h2 id="Solr-简介"><a href="#Solr-简介" class="headerlink" title="Solr 简介"></a>Solr 简介</h2><p><code>Solr</code>是Apache的一个子项目，采用Java开发，基于<code>Lucene</code>的全文搜索服务器，同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。<br>Solr提供了分面搜索、命中醒目显示并且支持多种输出格式（包括XML/XSLT和JSON格式）。它易于安装和配置，而且附带了一个基于HTTP的管理界面。Solr已经在众多大型的网站中使用，较为成熟和稳定。Solr包装并扩展了Lucene，所以Solr的基本上沿用了Lucene的相关术语。更重要的是，Solr创建的索引与Lucene搜索引擎库完全兼容。通过对Solr进行适当的配置，某些情况下可能需要进行编码，Solr可以阅读和使用构建到其他Lucene应用程序中的索引。此外，很多 Lucene 工具（如Nutch、 Luke）也可以使用Solr 创建的索引。</p>
+<h2 id="Solr原理"><a href="#Solr原理" class="headerlink" title="Solr原理"></a>Solr原理</h2><p>Solr对外提供标准的http接口来实现对数据的索引的增加、删除、修改、查询。在Solr中，用户通过向部署在servlet容器中的SolrWeb应用程序发送HTTP请求来启动索引和搜索。Solr接受请求，确定要使用的适当SolrRequestHandler，然后处理请求。通过HTTP以同样的方式返回响应。默认配置返回Solr的标准XML响应，也可以配置Solr 的备用响应格式。<br>可以向 Solr 索引 servlet 传递四个不同的索引请求：</p>
+<ul>
+<li>add/update 允许向 Solr 添加文档或更新文档。直到提交后才能搜索到这些添加和更新。</li>
+<li>commit 告诉 Solr，应该使上次提交以来所做的所有更改都可以搜索到。</li>
+<li>optimize 重构Lucene的文件以改进搜索性能。索引完成后执行一下优化通常比较好。如果更新比较频繁，则应该在使用率较低的时候安排优化。一个索引无需优化也可以正常地运行。优化是一个耗时较多的过程。</li>
+<li>delete 可以通过 id 或查询来指定。按 id 删除将删除具有指定 id 的文档；按查询删除将删除查询返回的所有文档。</li>
+</ul>
+<h2 id="Solr的部署与安装"><a href="#Solr的部署与安装" class="headerlink" title="Solr的部署与安装"></a>Solr的部署与安装</h2><p>由于Solr是Java开发，所以他可以被部署在Windows或者Linux上，由于项目中的环境是Linux，所以将只描述Linux环境。</p>
+<h4 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h4><p>Solr需要托管在Tomcat下以及需要安装JDK，安装Tomcat和JDK这里不做过多描述，详细可自行百度</p>
+<h4 id="部署Solr"><a href="#部署Solr" class="headerlink" title="部署Solr"></a>部署Solr</h4><p>去官网<a href="http://www.apache.org/dyn/closer.lua/lucene/solr/5.3.1" target="_blank" rel="noopener">下载Solr</a>下载Solr，下载完毕以后解压，将Solr的部署包放到tomcat的webapps文件夹下，然后启动tomcat，tomcat会自动将Solr的压缩包解压并部署到tomcat上</p>
+<h4 id="创建Solr实例"><a href="#创建Solr实例" class="headerlink" title="创建Solr实例"></a>创建Solr实例</h4><p>在官网上下载的Solr解压后，有一个Solr_Home的文件夹，我们将其放在tomcat的文件夹下（或者别的位置，根据自己喜好）</p>
+<h4 id="设置Solr-Home"><a href="#设置Solr-Home" class="headerlink" title="设置Solr_Home"></a>设置Solr_Home</h4><p>以上部署完毕后，打开<code>tomcat\webapps\solr\WEB-INF</code>文件夹，编辑该文件夹下的web.xml文件，找到其中的<code>&lt;env-entry-value&gt;</code>节点，将该节点的值修改为上一步中Solr_Home的路径</p>
+<h4 id="重启Tomcat"><a href="#重启Tomcat" class="headerlink" title="重启Tomcat"></a>重启Tomcat</h4><p>以上操作都完成后，重启Tomcat，然后访问Tomcat的地址+/solr，应该就可以打开Solr的在线管理工具了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://leemq.top/2015/11/05/Solr技术分享/" data-id="cjzrt417o0000usglgee7k60w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solr/">Solr</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用Hexo搭建自己的Blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2015/10/29/使用Hexo搭建自己的Blog/" class="article-date">
+  <time datetime="2015-10-29T04:16:10.000Z" itemprop="datePublished">2015-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2015/10/29/使用Hexo搭建自己的Blog/">使用Hexo搭建自己的Blog</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　　前几天萌生了搭建一个属于自己的博客小站的想法，作为一只码虫，自然想到了就要去实现它。在网上了解了下，一般主流的就是使用<code>WordPress</code>或者<code>OctoPress</code>来建站，功能是大而全的，但是我并不能用得到，而且据说当到了后期博文多了以后（吹个牛逼先），每次生成发布的速度很慢，考虑了下，我还是准备找一个轻量级的工具（其实是因为需要配置的太繁琐，而且逼格不够高）。后来无意间在一个博主的博客看到他说他从WordPress迁移到了Hexo，而且感觉很好，这不由得让我眼前一亮，于是就有了这个博客以及这篇文章。<br>　　扯了这么多没用的，我选择Hexo的原因主要有以下的几点：</p>
+<ul>
+<li>首先，最近刚做完了一个<code>Node.js</code>的项目，所以对基于Node.js的Hexo比较有好感；</li>
+<li>其次，Hexo从生成文章到发布的速度非常快，也就几秒，而且命令简单，只需要一句：<code>Hexo d -g</code> 就可以搞定；</li>
+<li>再次，支持部署到Github等第三方托管平台，且基本不需要什么额外的命令，简单粗暴。这里需要说明一下，本来我是想把我的Blog搭建在我的VPS上，可是我的VPS是OneTime形式付费购买的，所以我对于安全性和稳定性一直不太敢放心，再一个我的VPS的数据中心在加拿大，所以网速是个大问题，并且只是一个博客而已，静态页面足矣，所以为了访问体验，我最后选择将我的Blog部署到Github上；</li>
+<li>最后，Hexo足够简单，却能满足一个博客应有的所有功能，并且支持<code>Markdown</code>语法，真是满足了我的一切需求，所以最后我选择了Hexo</li>
+</ul>
+<p>　　好了，闲话到此为止，下面我将分享此次的blog搭建过程，以及我在过程中遇到的问题和解决方法，因为网上已经有很多的教程，所以这里我会引用部分，最后会进行标明。</p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2015/10/29/使用Hexo搭建自己的Blog/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://leemq.top/2015/10/29/使用Hexo搭建自己的Blog/" data-id="cjzrt417t0001usgl9267cfs5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Angular指令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2015/10/27/Angular指令/" class="article-date">
+  <time datetime="2015-10-27T01:09:49.000Z" itemprop="datePublished">2015-10-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2015/10/27/Angular指令/">AngularJS指令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AngularJS-的指令"><a href="#AngularJS-的指令" class="headerlink" title="AngularJS 的指令"></a>AngularJS 的指令</h1><h2 id="自带指令"><a href="#自带指令" class="headerlink" title="自带指令"></a>自带指令</h2><p>　　<code>AngularJS</code>中自带的指令是以<code>ng-*</code>为格式.</p>
+<h2 id="无聊修了一张青岛的夜景"><a href="#无聊修了一张青岛的夜景" class="headerlink" title="无聊修了一张青岛的夜景"></a>无聊修了一张青岛的夜景</h2><p><img src="http://7xnuga.com1.z0.glb.clouddn.com/%E9%9D%92%E5%B2%9B%E5%A4%9C%E6%99%AF.jpg" alt="青岛夜景"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://leemq.top/2015/10/27/Angular指令/" data-id="cjzrt417y0003usglcq7sg6pn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/前端技术/">前端技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HelloWorld" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2015/10/25/HelloWorld/" class="article-date">
+  <time datetime="2015-10-25T15:22:13.000Z" itemprop="datePublished">2015-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2015/10/25/HelloWorld/">HelloWorld</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>欢迎各位来到我的小站，我在这里记录我生活的点点滴滴，记录一只码虫的成长过程。</p>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>　　我在Hexo上的第一篇文章，自然是以惯例Hello World开始，结果没想到Hexo已经自带了一篇Hello World，Orz。。</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>　　博客系统用的就是基于<code>Node.js</code>的<code>Hexo</code>，最开始我是想把我的blog运行在我的VPS上，但是由于我的潜在读者（目前只有我自己）都是天朝之民，访问加拿大的VPS估计得慢死，而且谁知道这个VPS什么时候就跪了，为了求稳求安全，我还是把它挂到了我的<code>Github</code>上，反正都是静态页面，这样快很多。<br>　　但是blog系统本身我是安装在VPS上，因为这样我就可以随时随地编写我的blog了，并不会局限于使用什么电脑，即便是在公司（我是整理技术资料！摔）。<code>Hexo</code>提供了一键部署功能，全部环境配置好以后，只需要一个命令<code>hexo deploy</code>就可以将blog发布到<code>Github</code>了，简单粗暴。<br>　　只有一点我想吐槽，就是新建文章很简单，只需要<code>hexo new &quot;title&quot;</code>命令就可以了，但是只是创建了一片文章，并不能直接编辑，还需要到source文件夹下找到该文章再编辑，感觉要是有能直接编辑的命令会方便很多。</p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2015/10/25/HelloWorld/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://leemq.top/2015/10/25/HelloWorld/" data-id="cjzrt417z0004usgl9o3j8ssb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/胡写乱画/">胡写乱画</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Solr/">Solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/前端技术/">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/胡写乱画/">胡写乱画</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/blog/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/blog/tags/前端技术/" style="font-size: 10px;">前端技术</a> <a href="/blog/tags/胡写乱画/" style="font-size: 10px;">胡写乱画</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/10/">十月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2015/11/05/Solr技术分享/">Solr技术分享</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/10/29/使用Hexo搭建自己的Blog/">使用Hexo搭建自己的Blog</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/10/27/Angular指令/">AngularJS指令</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/10/25/HelloWorld/">HelloWorld</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Lee Dasdan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
